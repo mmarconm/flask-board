@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% from '_macros.html' import task_section with context %}
+
+{% block content %}
+
+<main class="flex flex-col w-full h-full">
+    {% include '_partials/header.html' %}
+    <div class="w-full h-full grid grid-cols-[repeat(3,260px)]">
+        {{ task_section("Planejamento") }}
+        {{ task_section("Desenvolvimento") }}
+    </div>
+</main>
+
+{% endblock %}

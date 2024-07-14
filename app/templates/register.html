@@ -1,0 +1,32 @@
+{% extends 'base_core.html' %}
+
+{% from '_macros.html' import task_section with context %}
+
+{% block content %}
+
+<div class="flex w-full h-full items-center justify-center bg-zinc-50">
+    <form action="{{ url_for('core.register') }}" class="p-4 min-w-[300px]" method="post">
+      <div class="text-center text-4xl"><i class="ph-duotone ph-patreon-logo"></i></div>
+      <h3 class="text-xl font-extrabold text-center uppercase mb-10">Acesso</h3>
+      <div class="w-full">
+        <div class="mb-4">
+          {{ form.username(class_="text-zinc-800 text-sm px-4 py-3 border-zinc-400 block bg-zinc-100 w-full focus:bg-white focus:outline-none rounded", placeholder_="Usuário") }}
+        </div>
+        <div class="mb-4">
+          {{ form.password(class_="text-zinc-800 text-sm px-4 py-3 border-zinc-400 block bg-zinc-100 w-full focus:bg-white focus:outline-none rounded", placeholder_="Password") }}
+        </div>       
+        <div class="">
+          {{ form.confirm_password(class_="text-zinc-800 text-sm px-4 py-3 border-zinc-400 block bg-zinc-100 w-full focus:bg-white focus:outline-none rounded", placeholder_="Confirm password") }}
+        </div>
+        <div class="mt-4">
+          <button class="w-full bg-indigo-600 px-4 py-3 text-center text-sm font-semibold inline-block text-white cursor-pointer uppercase transition duration-200 ease-in-out rounded hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 active:scale-9">Registrar</button>
+        </div>
+        <div class="my-6 text-sm">
+          <p>Ja possui acesso? clique no link</p>
+          <a href="{{ url_for('core.login') }}" class="mt-2 w-full bg-zinc-600 px-4 py-3 text-center text-sm font-semibold inline-block text-white cursor-pointer uppercase transition duration-200 ease-in-out rounded hover:bg-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-600 focus-visible:ring-offset-2 active:scale-9">Acessar</a>
+        </div>
+      </div>
+    </form>
+  </div>
+
+{% endblock %}
