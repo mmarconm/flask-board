@@ -1,10 +1,10 @@
 {% macro task_card(task_item) %}
-<li class="bg-zinc-50 border-zinc-400 rounded-sm shadow-md relative draggable" draggable="true">
+<li id="task-item-{{ task_item.id }}" class="bg-zinc-50 border-zinc-400 rounded-sm shadow-md relative draggable task-item" draggable="true">
   <div class="bg-indigo-200 min-h-4"></div>
-    <div class="absolute top-2 right-2">
-      <img class="rounded-sm w-7 h-7" src="{{ url_for('static', filename='img/face-2.png' )}}" alt="">
-    </div>
-    <div class="p-2">
+  <div class="absolute top-2 right-2">
+    <img class="rounded-sm w-7 h-7" src="{{ url_for('static', filename='img/face-2.png' )}}" alt="">
+  </div>
+  <div class="p-2">
     <header class="text-xs font-normal flex items-center">
       <span>{{ task_item.title }}</span>
     </header>
@@ -17,18 +17,16 @@
 {% endmacro %}
 
 {% macro task_section(task) %}
-<section class="border-x p-2 bg-white overflow-y-auto">
+<section id="task-{{ task.id }}" class="task border-x p-2 bg-white overflow-y-auto" ondrop="drop(event)" ondragover="allowDrop(event)">
   <header class="py-4 text-sm flex items-center justify-between">
     <h3>{{ task.title }}</h3>
     <a href="#" class="p-1 bg-indigo-300 hover:bg-indigo-400 active:bg-indigo-500 flex items-center justify-center text-white"><i class="ph ph-plus"></i></a>
   </header>
 
-      <ol class="space-y-4">
-        {% for task_item in task.task_items %}
-            {{ task_card(task_item) }}
-        {% endfor %}
-      </ol>
-
-
-  </section>
+  <ol class="space-y-4 task-items">
+    {% for task_item in task.task_items %}
+        {{ task_card(task_item) }}
+    {% endfor %}
+  </ol>
+</section>
 {% endmacro %}

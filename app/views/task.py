@@ -6,7 +6,7 @@ from flask import (
     jsonify,
 )
 
-from app.models.task import Task
+from app.models.task import Task, TaskItem
 
 bp_task = Blueprint("task", __name__)
 
@@ -39,3 +39,18 @@ def move_task_item():
     task.status = new_status
     current_app.db.session.commit()
     return jsonify({"status": "success"})
+
+
+@bp_task.route("/update_task_item", methods=["POST"])
+def update_task_item():
+    data = request.get_json()
+    print(data)
+    task_item_id = data.get("task_item_id")
+    new_task_id = data.get("new_task_id")
+
+    task_item = TaskItem.query.get(task_item_id)
+    if task_item:
+        task_item.task_id = new_task_id
+        current_app.db.session.commit()
+        return jsonify({"message": "Task item updated successfully"}), 200
+    return jsonify({"message": "Task item not found"}), 404
