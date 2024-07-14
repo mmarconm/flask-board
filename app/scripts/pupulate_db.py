@@ -23,46 +23,39 @@ def populate_db():
     ]
 
     task_items = [
-        {"title": "Subtask 1", "status": "Done", "is_completed": True, "task_id": 1},
         {
-            "title": "Subtask 2",
+            "title": "Subtask 10",
+            "status": "Pending",
+            "is_completed": False,
+            "task_id": 1,
+        },
+        {"title": "Subtask 4", "status": "Done", "is_completed": True, "task_id": 1},
+        {
+            "title": "Subtask 11",
             "status": "In Progress",
             "is_completed": False,
             "task_id": 1,
         },
         {
-            "title": "Subtask 3",
-            "status": "Pending",
-            "is_completed": False,
-            "task_id": 2,
-        },
-        {"title": "Subtask 4", "status": "Done", "is_completed": True, "task_id": 2},
-        {
-            "title": "Subtask 5",
-            "status": "In Progress",
-            "is_completed": False,
-            "task_id": 3,
-        },
-        {
             "title": "Subtask 6",
             "status": "Pending",
             "is_completed": False,
-            "task_id": 4,
+            "task_id": 1,
         },
-        {"title": "Subtask 7", "status": "Done", "is_completed": True, "task_id": 3},
+        {"title": "Subtask 7", "status": "Done", "is_completed": True, "task_id": 1},
         {
-            "title": "Subtask 8",
+            "title": "Subtask 12",
             "status": "In Progress",
             "is_completed": False,
-            "task_id": 4,
+            "task_id": 1,
         },
         {
-            "title": "Subtask 9",
+            "title": "Subtask 13",
             "status": "Pending",
             "is_completed": False,
-            "task_id": 3,
+            "task_id": 1,
         },
-        {"title": "Subtask 10", "status": "Done", "is_completed": True, "task_id": 3},
+        {"title": "Subtask 10", "status": "Done", "is_completed": True, "task_id": 1},
     ]
 
     for task_data in tasks:

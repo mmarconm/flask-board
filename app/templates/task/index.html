@@ -6,11 +6,13 @@
 
 <main class="flex flex-col w-full h-full">
   {% include '_partials/header.html' %}
-  <div class="bg-zinc-100 w-full h-[calc(100%-6rem)] gap-3 justify-start grid overflow-x-scroll grid-flow-col" style="grid-auto-columns: 260px;">
+
+  <div class="bg-zinc-100 w-full h-full gap-3 justify-start grid overflow-x-scroll grid-flow-col px-3" style="grid-auto-columns: 260px;">
     {% for task in tasks %}
         {{ task_section(task) }}
     {% endfor %}
   </div>
+  
 </main>
 
 {% endblock %}

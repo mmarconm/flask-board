@@ -17,7 +17,7 @@
 {% endmacro %}
 
 {% macro task_section(task) %}
-<section class="border-x p-2 bg-white min-h-fit max-h-max">
+<section class="border-x p-2 bg-white min-h-fit max-h-max overflow-y-auto">
   <header class="py-4 text-sm flex items-center justify-between">
     <h3>{{ task.title }}</h3>
     <a href="#" class="p-1 bg-indigo-300 hover:bg-indigo-400 active:bg-indigo-500 flex items-center justify-center text-white"><i class="ph ph-plus"></i></a>
