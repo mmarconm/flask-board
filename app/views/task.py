@@ -19,18 +19,17 @@ def about():
 @bp_task.route("/")
 def index():
     tasks = Task.query.all()
-    return render_template("task/index.html")
+    print(tasks)
+    return render_template("task/index.html", tasks=tasks)
 
 
 @bp_task.route("/add", methods=["POST"])
 def add_task():
     title = request.form.get("title")
-    new_task = Task(title=title, status="Planejamento")
+    new_task = Task(title=title)
     current_app.db.session.add(new_task)
     current_app.db.session.commit()
-    return jsonify(
-        {"id": new_task.id, "title": new_task.title, "status": new_task.status}
-    )
+    return jsonify({"id": new_task.id, "title": new_task.title})
 
 
 @bp_task.route("/move", methods=["POST"])

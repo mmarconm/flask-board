@@ -5,11 +5,12 @@
 {% block content %}
 
 <main class="flex flex-col w-full h-full">
-    {% include '_partials/header.html' %}
-    <div class="w-full h-full grid grid-cols-[repeat(3,260px)]">
-        {{ task_section("Planejamento") }}
-        {{ task_section("Desenvolvimento") }}
-    </div>
+  {% include '_partials/header.html' %}
+  <div class="w-full h-full grid grid-cols-[repeat(5,260px)] gap-4 overflow-hidden">
+    {% for task in tasks %}
+        {{ task_section(task) }}
+    {% endfor %}
+  </div>
 </main>
 
 {% endblock %}

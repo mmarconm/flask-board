@@ -1,4 +1,4 @@
-{% macro task_card(title) %}
+{% macro task_card(task_item) %}
 <li class="bg-zinc-50 border-zinc-400 rounded-sm shadow relative draggable" data-name="card1">
     <div class="bg-indigo-200 min-h-4"></div>
     <div class="absolute top-2 right-2">
@@ -6,7 +6,7 @@
     </div>
     <div class="p-2">
     <header class="text-xs font-normal flex items-center">
-        <span>{{ title }}</span>
+        <span>{{ task_item.title }}</span>
     </header>
     <main class="flex items-center py-1 gap-2">
         <a href="#" class="text-lg flex items-center"><i class="ph ph-check-square-offset"></i></a>
@@ -16,14 +16,16 @@
 </li>
 {% endmacro %}
 
-{% macro task_section(name) %}
-<section class="border-x p-2">
+{% macro task_section(task) %}
+<section class="border-x p-2 overflow-y-auto">
     <header class="py-4 text-sm flex items-center justify-between">
-    <h3>{{ name }}</h3>
+    <h3>{{ task.title }}</h3>
     <a href="#" class="p-1 bg-indigo-300 hover:bg-indigo-400 active:bg-indigo-500 flex items-center justify-center text-white"><i class="ph ph-plus"></i></a>
     </header>
     <ul class="space-y-2">
-        {{ task_card("Planejamento") }}
+        {% for task_item in task.task_items %}
+            {{ task_card(task_item) }}
+        {% endfor %}
     </ul>
 </section>
 {% endmacro %}
