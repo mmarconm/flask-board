@@ -7,7 +7,7 @@
 <main class="flex flex-col overflow-hidden">
   {% include '_partials/header.html' %}
 
-  <div class="overflow-x-auto bg-zinc-200 h-full flex-1 grid grid-flow-col space-x-4 p-4" style="grid-auto-columns: 260px;">
+  <div class="overflow-x-auto bg-slate-200 h-full flex-1 grid grid-flow-col space-x-4 p-4" style="grid-auto-columns: 260px;">
       {% for task in tasks %}
           {{ task_section(task) }}
       {% endfor %}
