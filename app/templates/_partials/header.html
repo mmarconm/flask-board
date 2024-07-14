@@ -1,6 +1,25 @@
 <header
-  class="flex justify-between items-center min-h-24 p-2 text-white bg-indigo-500 w-full border-b-8 border-b-indigo-600"
+  class="flex flex-col min-h-24 text-white bg-indigo-800 w-full"
 >
+<div class="w-full flex justify-between items-center flex-1 p-2">
   <h3 class="text-xl">Trélu</h3>
   <span>{{ current_user.username }}</span>
+</div>
+  <nav class="w-full bg-indigo-700 px-2 py-0 flex gap-2 justify-end">
+    <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 bg-indigo-800 hover:bg-indigo-900 active:scale-95 text-sm">
+      Novo processo
+    </a>
+    <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2  hover:bg-indigo-800 active:scale-95">
+      <i class="ph-duotone ph-airplane"></i>
+    </a>
+    <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2  hover:bg-indigo-800  active:scale-95">
+      <i class="ph-duotone ph-chat"></i>
+    </a>
+    <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2  hover:bg-indigo-800  active:scale-95">
+      <i class="ph-duotone ph-asterisk"></i>
+    </a>
+    <a href="{{ url_for('core.logout') }}" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2  hover:bg-indigo-800  active:scale-95">
+      <i class="ph-duotone ph-arrow-circle-right"></i>
+    </a>
+  </nav>
 </header>

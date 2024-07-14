@@ -5,6 +5,7 @@ class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sequence = db.Column(db.Integer, default=0)
     title = db.Column(db.String(100), nullable=False)
+    isAllowedTask = db.Column(db.Boolean, default=True)
     created_at = db.Column(
         db.DateTime, nullable=False, default=db.func.current_timestamp()
     )

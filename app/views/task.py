@@ -49,7 +49,6 @@ def move_task_item():
 @login_required
 def update_task_item():
     data = request.get_json()
-    print(data)
     task_item_id = data.get("task_item_id")
     new_task_id = data.get("new_task_id")
 

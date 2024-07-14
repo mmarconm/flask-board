@@ -24,38 +24,65 @@ def populate_db():
 
     task_items = [
         {
-            "title": "Subtask 10",
+            "title": "Planejamento da Sprint",
             "status": "Pending",
             "is_completed": False,
             "task_id": 1,
         },
-        {"title": "Subtask 4", "status": "Done", "is_completed": True, "task_id": 1},
         {
-            "title": "Subtask 11",
-            "status": "In Progress",
-            "is_completed": False,
-            "task_id": 1,
-        },
-        {
-            "title": "Subtask 6",
+            "title": "Desenvolvimento do Frontend",
             "status": "Pending",
             "is_completed": False,
             "task_id": 1,
         },
-        {"title": "Subtask 7", "status": "Done", "is_completed": True, "task_id": 1},
         {
-            "title": "Subtask 12",
-            "status": "In Progress",
-            "is_completed": False,
-            "task_id": 1,
-        },
-        {
-            "title": "Subtask 13",
+            "title": "Desenvolvimento do Backend",
             "status": "Pending",
             "is_completed": False,
             "task_id": 1,
         },
-        {"title": "Subtask 10", "status": "Done", "is_completed": True, "task_id": 1},
+        {
+            "title": "Testes de Usabilidade",
+            "status": "Pending",
+            "is_completed": False,
+            "task_id": 1,
+        },
+        {
+            "title": "Testes de Performance",
+            "status": "Pending",
+            "is_completed": False,
+            "task_id": 1,
+        },
+        {
+            "title": "Deploy no Heroku",
+            "status": "Pending",
+            "is_completed": False,
+            "task_id": 1,
+        },
+        {
+            "title": "Deploy no AWS",
+            "status": "Pending",
+            "is_completed": False,
+            "task_id": 1,
+        },
+        {
+            "title": "Correção de Bug de Usuário",
+            "status": "Pending",
+            "is_completed": False,
+            "task_id": 1,
+        },
+        {
+            "title": "Correção de Bug de Admin",
+            "status": "Pending",
+            "is_completed": False,
+            "task_id": 1,
+        },
+        {
+            "title": "Task Cancelada",
+            "status": "Pending",
+            "is_completed": False,
+            "task_id": 1,
+        },
     ]
 
     for task_data in tasks:
