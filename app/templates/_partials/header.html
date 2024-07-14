@@ -1,25 +1,35 @@
-<header
-  class="flex flex-col min-h-24 text-white bg-indigo-800 w-full"
->
-<div class="w-full flex justify-between items-center flex-1 p-2">
-  <h3 class="text-xl">Trélu</h3>
-  <span>{{ current_user.username }}</span>
-</div>
-  <nav class="w-full bg-indigo-700 px-2 py-0 flex gap-2 justify-end">
-    <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 bg-indigo-800 hover:bg-indigo-900 active:scale-95 text-sm">
-      Novo processo
-    </a>
-    <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2  hover:bg-indigo-800 active:scale-95">
-      <i class="ph-duotone ph-airplane"></i>
-    </a>
-    <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2  hover:bg-indigo-800  active:scale-95">
-      <i class="ph-duotone ph-chat"></i>
-    </a>
-    <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2  hover:bg-indigo-800  active:scale-95">
-      <i class="ph-duotone ph-asterisk"></i>
-    </a>
-    <a href="{{ url_for('core.logout') }}" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2  hover:bg-indigo-800  active:scale-95">
-      <i class="ph-duotone ph-arrow-circle-right"></i>
-    </a>
+<header class="flex flex-col min-h-24 text-white bg-indigo-800 w-full">
+  <div class="w-full flex justify-between items-center flex-1 p-2">
+    <h1 class="text-xl">Trélu</h1>
+    <span>{{ current_user.username }}</span>
+  </div>
+  <nav class="w-full bg-indigo-700 px-2 flex gap-2 justify-end">
+    <ul class="flex gap-2 items-center">
+      <li>
+        <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 bg-indigo-800 hover:bg-indigo-900 active:scale-95 text-sm">
+          Novo processo
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-indigo-800 active:scale-95">
+          <i class="ph-duotone ph-airplane"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-indigo-800 active:scale-95">
+          <i class="ph-duotone ph-chat"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-indigo-800 active:scale-95">
+          <i class="ph-duotone ph-asterisk"></i>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url_for('core.logout') }}" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-indigo-800 active:scale-95">
+          <i class="ph-duotone ph-arrow-circle-right"></i>
+        </a>
+      </li>
+    </ul>
   </nav>
 </header>
