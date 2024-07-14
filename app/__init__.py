@@ -22,6 +22,12 @@ def create_app():
     configure_db(app)
     Migrate(app, app.db)
 
+    # Registering Commands
+    with app.app_context():
+        from app.scripts.pupulate_db import populate_db
+
+        app.cli.add_command(populate_db)
+
     # Registering Blueprints
     from app.views.task import bp_task
     from app.views.core import bp_core

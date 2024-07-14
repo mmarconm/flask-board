@@ -3,6 +3,7 @@ from app.models.configure import db
 
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    sequence = db.Column(db.Integer, default=0)
     title = db.Column(db.String(100), nullable=False)
     created_at = db.Column(
         db.DateTime, nullable=False, default=db.func.current_timestamp()
@@ -13,9 +14,22 @@ class Task(db.Model):
     def __str__(self) -> str:
         return self.title
 
+    @classmethod
+    def get_task_count(cls):
+        return cls.query.count()
+
+    @classmethod
+    def get_next_sequence(cls):
+        return cls.get_task_count() + 1
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.sequence = self.get_next_sequence()
+
 
 class TaskItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    sequence = db.Column(db.Integer, default=0)
     title = db.Column(db.String(100), nullable=False)
     status = db.Column(db.String(100), nullable=False)
     is_completed = db.Column(db.Boolean, default=False)
@@ -27,3 +41,15 @@ class TaskItem(db.Model):
 
     def __str__(self) -> str:
         return self.title
+
+    @classmethod
+    def get_taskitem_count(cls):
+        return cls.query.count()
+
+    @classmethod
+    def get_next_sequence(cls):
+        return cls.get_taskitem_count() + 1
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.sequence = self.get_next_sequence()

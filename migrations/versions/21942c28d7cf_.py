@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 2fccca1f2376
+Revision ID: 21942c28d7cf
 Revises: 
-Create Date: 2024-07-14 10:30:58.739547
+Create Date: 2024-07-14 12:59:08.435088
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '2fccca1f2376'
+revision = '21942c28d7cf'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -29,14 +29,16 @@ def upgrade():
     )
     op.create_table('task',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('sequence', sa.Integer(), nullable=True),
     sa.Column('title', sa.String(length=100), nullable=False),
-    sa.Column('status', sa.String(length=100), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('task_item',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('sequence', sa.Integer(), nullable=True),
     sa.Column('title', sa.String(length=100), nullable=False),
     sa.Column('status', sa.String(length=100), nullable=False),
     sa.Column('is_completed', sa.Boolean(), nullable=True),

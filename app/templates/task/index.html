@@ -6,7 +6,7 @@
 
 <main class="flex flex-col w-full h-full">
   {% include '_partials/header.html' %}
-  <div class="w-full h-full grid grid-cols-[repeat(5,260px)] gap-4 overflow-hidden">
+  <div class="bg-zinc-100 w-full h-[calc(100%-6rem)] gap-3 justify-start grid overflow-x-scroll grid-flow-col" style="grid-auto-columns: 260px;">
     {% for task in tasks %}
         {{ task_section(task) }}
     {% endfor %}
