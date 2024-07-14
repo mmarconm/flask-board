@@ -19,7 +19,6 @@ def about():
 @bp_task.route("/")
 def index():
     tasks = Task.query.all()
-    print(tasks)
     return render_template("task/index.html", tasks=tasks)
 
 

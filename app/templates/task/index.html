@@ -4,13 +4,13 @@
 
 {% block content %}
 
-<main class="flex flex-col w-full h-full">
+<main class="flex flex-col overflow-hidden">
   {% include '_partials/header.html' %}
 
-  <div class="bg-zinc-100 w-full h-full gap-3 justify-start grid overflow-x-scroll grid-flow-col px-3" style="grid-auto-columns: 260px;">
-    {% for task in tasks %}
-        {{ task_section(task) }}
-    {% endfor %}
+  <div class="overflow-x-auto bg-zinc-200 h-full flex-1 grid grid-flow-col space-x-4 p-4" style="grid-auto-columns: 260px;">
+      {% for task in tasks %}
+          {{ task_section(task) }}
+      {% endfor %}
   </div>
   
 </main>
