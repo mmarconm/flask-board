@@ -5,9 +5,13 @@
 {% block content %}
 
 <div class="flex w-full h-full items-center justify-center bg-zinc-50">
-    <form action="{{ url_for('core.register') }}" class="p-4 min-w-[300px]" method="post">
+    <form action="{{ url_for('core.register') }}" class="p-4 min-w-[400px]" method="post">
+      {{ form.hidden_tag() }}
       <div class="text-center text-4xl"><i class="ph-duotone ph-patreon-logo"></i></div>
       <h3 class="text-xl font-extrabold text-center uppercase mb-10">Acesso</h3>
+      <div class="my-2">
+        {% include '_partials/messages.html' %}
+      </div>
       <div class="w-full">
         <div class="mb-4">
           {{ form.username(class_="text-zinc-800 text-sm px-4 py-3 border-zinc-400 block bg-zinc-100 w-full focus:bg-white focus:outline-none rounded", placeholder_="Usuário") }}
@@ -19,7 +23,7 @@
           {{ form.confirm_password(class_="text-zinc-800 text-sm px-4 py-3 border-zinc-400 block bg-zinc-100 w-full focus:bg-white focus:outline-none rounded", placeholder_="Confirm password") }}
         </div>
         <div class="mt-4">
-          <button class="w-full bg-indigo-600 px-4 py-3 text-center text-sm font-semibold inline-block text-white cursor-pointer uppercase transition duration-200 ease-in-out rounded hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 active:scale-9">Registrar</button>
+          <button type="submit" class="w-full bg-indigo-600 px-4 py-3 text-center text-sm font-semibold inline-block text-white cursor-pointer uppercase transition duration-200 ease-in-out rounded hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 active:scale-9">Registrar</button>
         </div>
         <div class="my-6 text-sm">
           <p>Ja possui acesso? clique no link</p>

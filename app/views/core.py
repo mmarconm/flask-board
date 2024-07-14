@@ -13,7 +13,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from flask_login import (
     login_user,
-    current_user,
 )
 
 from app.models import User
@@ -48,6 +47,6 @@ def register():
             )
             current_app.db.session.add(user)
             current_app.db.session.commit()
-            flash("Usuário criado com sucesso!", "success")
-            return redirect(url_for("login"))
+            flash("Usuário criado com sucesso!", "info")
+            return redirect(url_for("core.login"))
     return render_template("register.html", form=form)

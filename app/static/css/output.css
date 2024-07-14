@@ -578,6 +578,11 @@ video {
   top: 0.5rem;
 }
 
+.my-2{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .my-6{
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -643,8 +648,8 @@ video {
   width: 100%;
 }
 
-.min-w-\[300px\]{
-  min-width: 300px;
+.min-w-\[400px\]{
+  min-width: 400px;
 }
 
 .flex-none{
@@ -691,12 +696,12 @@ video {
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 
-.rounded-sm{
-  border-radius: 0.125rem;
-}
-
 .rounded{
   border-radius: 0.25rem;
+}
+
+.rounded-sm{
+  border-radius: 0.125rem;
 }
 
 .border-x{
@@ -742,6 +747,11 @@ video {
   background-color: rgb(99 102 241 / var(--tw-bg-opacity));
 }
 
+.bg-indigo-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(79 70 229 / var(--tw-bg-opacity));
+}
+
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -755,11 +765,6 @@ video {
 .bg-zinc-50{
   --tw-bg-opacity: 1;
   background-color: rgb(250 250 250 / var(--tw-bg-opacity));
-}
-
-.bg-indigo-600{
-  --tw-bg-opacity: 1;
-  background-color: rgb(79 70 229 / var(--tw-bg-opacity));
 }
 
 .bg-zinc-600{
@@ -779,24 +784,24 @@ video {
   padding: 1rem;
 }
 
-.py-1{
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
-.py-4{
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .px-4{
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
+.py-1{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .py-3{
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.py-4{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .text-center{
@@ -806,6 +811,11 @@ video {
 .text-2xl{
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .text-lg{
@@ -828,17 +838,12 @@ video {
   line-height: 1rem;
 }
 
-.text-4xl{
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+.font-extrabold{
+  font-weight: 800;
 }
 
 .font-normal{
   font-weight: 400;
-}
-
-.font-extrabold{
-  font-weight: 800;
 }
 
 .font-semibold{
@@ -883,12 +888,12 @@ video {
   transition-duration: 150ms;
 }
 
-.duration-300{
-  transition-duration: 300ms;
-}
-
 .duration-200{
   transition-duration: 200ms;
+}
+
+.duration-300{
+  transition-duration: 300ms;
 }
 
 .ease-in-out{
@@ -912,6 +917,34 @@ body {
 
 .draggable:hover {
   cursor: grab;
+}
+
+.info{
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+  /* px-2 py-4 text-center bg-blue-100 font-normal text-sm mt-3 */
+}
+
+.danger{
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+  /* px-2 py-4 text-center bg-blue-100 font-normal text-sm mt-3 */
 }
 
 .hover\:bg-gray-200:hover{
