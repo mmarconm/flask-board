@@ -5,6 +5,7 @@ from flask import (
     request,
     jsonify,
 )
+from flask_login import login_required
 
 from app.models.task import Task, TaskItem
 
@@ -17,12 +18,14 @@ def about():
 
 
 @bp_task.route("/")
+@login_required
 def index():
     tasks = Task.query.all()
     return render_template("task/index.html", tasks=tasks)
 
 
 @bp_task.route("/addtask", methods=["POST"])
+@login_required
 def add_task():
     title = request.form.get("title")
     new_task = Task(title=title)
@@ -32,6 +35,7 @@ def add_task():
 
 
 @bp_task.route("/moveitem", methods=["POST"])
+@login_required
 def move_task_item():
     task_id = request.form.get("task_id")
     new_status = request.form.get("new_status")
@@ -42,6 +46,7 @@ def move_task_item():
 
 
 @bp_task.route("/update_task_item", methods=["POST"])
+@login_required
 def update_task_item():
     data = request.get_json()
     print(data)
