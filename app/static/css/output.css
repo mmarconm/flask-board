@@ -588,6 +588,11 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.my-auto{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .mb-10{
   margin-bottom: 2.5rem;
 }
@@ -602,6 +607,10 @@ video {
 
 .mt-4{
   margin-top: 1rem;
+}
+
+.mt-auto{
+  margin-top: auto;
 }
 
 .block{
@@ -674,8 +683,16 @@ video {
   flex-direction: column;
 }
 
+.items-end{
+  align-items: flex-end;
+}
+
 .items-center{
   align-items: center;
+}
+
+.justify-end{
+  justify-content: flex-end;
 }
 
 .justify-center{

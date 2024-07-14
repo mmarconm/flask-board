@@ -1,24 +1,14 @@
-<aside class="bg-zinc-100 flex-none p-1 border-r border-gray-200">
-  <ul>
-    <li
-      class="transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-gray-200 active:scale-95"
-    >
-      <i class="ph ph-airplane text-2xl"></i>
-    </li>
-    <li
-      class="transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-gray-200 active:scale-95"
-    >
-      <i class="ph ph-airplay text-2xl"></i>
-    </li>
-    <li
-      class="transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-gray-200 active:scale-95"
-    >
-      <i class="ph ph-app-window text-2xl"></i>
-    </li>
-    <li
-      class="transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-gray-200 active:scale-95"
-    >
-      <i class="ph ph-arrow-circle-right text-2xl"></i>
-    </li>
-  </ul>
+<aside class="bg-zinc-100 p-1 border-r border-gray-200 flex flex-col">
+  <a href="#" class="transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-gray-200 active:scale-95">
+    <i class="ph ph-airplane text-2xl"></i>
+  </a>
+  <a href="#" class="transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-gray-200 active:scale-95">
+    <i class="ph ph-airplay text-2xl"></i>
+  </a>
+  <a href="#" class="transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-gray-200 active:scale-95">
+    <i class="ph ph-app-window text-2xl"></i>
+  </a>
+  <a href="{{ url_for('core.logout') }}" class="mt-auto transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-gray-200 active:scale-95">
+    <i class="ph ph-arrow-circle-right text-2xl"></i>
+  </a>
 </aside>

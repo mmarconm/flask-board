@@ -13,6 +13,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from flask_login import (
     login_user,
+    logout_user,
+    login_required,
 )
 
 from app.models import User
@@ -28,7 +30,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user and check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember_me.data)
-            return redirect(url_for("create_todo"))
+            return redirect(url_for("task.index"))
         else:
             flash("Login ou senha incorretos.", "danger")
     return render_template("login.html", form=form)
@@ -50,3 +52,11 @@ def register():
             flash("Usuário criado com sucesso!", "info")
             return redirect(url_for("core.login"))
     return render_template("register.html", form=form)
+
+
+@bp_core.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    flash("Você foi desconectado.", "info")
+    return redirect(url_for("core.login"))
