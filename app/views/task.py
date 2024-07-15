@@ -12,11 +12,6 @@ from app.models.task import Task, TaskItem
 bp_task = Blueprint("task", __name__)
 
 
-@bp_task.route("/about")
-def about():
-    return "about"
-
-
 @bp_task.route("/")
 @login_required
 def index():

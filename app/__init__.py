@@ -1,6 +1,6 @@
 from flask import Flask
-from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_migrate import Migrate
 
 from app.config import Config
 from app.models.configure import configure_db
@@ -22,6 +22,19 @@ def create_app():
     configure_db(app)
     Migrate(app, app.db)
 
+    from app.hooks import (
+        after_request,
+        before_request,
+        teardown_appcontext,
+        teardown_request,
+    )
+
+    # Registering Hooks
+    app.before_request(before_request)
+    app.after_request(after_request)
+    app.teardown_request(teardown_request)
+    app.teardown_appcontext(teardown_appcontext)
+
     # Registering Commands
     with app.app_context():
         from app.scripts.pupulate_db import populate_db
@@ -29,8 +42,8 @@ def create_app():
         app.cli.add_command(populate_db)
 
     # Registering Blueprints
-    from app.views.task import bp_task
     from app.views.core import bp_core
+    from app.views.task import bp_task
 
     app.register_blueprint(bp_task)
     app.register_blueprint(bp_core)
