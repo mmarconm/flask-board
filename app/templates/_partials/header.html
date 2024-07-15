@@ -1,10 +1,20 @@
 <header class="flex flex-col min-h-24 text-white bg-indigo-800 w-full">
   <div class="w-full flex justify-between items-center flex-1 p-2">
-    <h1 class="text-xl">Trélu</h1>
+    <h1 class="text-xl font-extrabold flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#a6a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-workflow"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
+      FlowManager
+    </h1>
     <span>{{ current_user.username }}</span>
   </div>
-  <nav class="w-full bg-indigo-700 px-2 flex gap-2 justify-end">
+  <nav class="w-full bg-indigo-700 px-2 py-1 flex gap-2 justify-between items-center">
+    <h3 class="text-indigo-300 font-semibold">Equipe de desenvolvimento - Flask/OpenShift</h3>
     <ul class="flex gap-2 items-center">
+      <li>
+        <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 bg-indigo-800 hover:bg-indigo-900 active:scale-95 text-sm gap-2">
+          <i class="ph ph-plus"></i>
+          Convidar membro
+        </a>
+      </li>
       <li>
         <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 bg-indigo-800 hover:bg-indigo-900 active:scale-95 text-sm">
           Novo processo
@@ -12,7 +22,7 @@
       </li>
       <li>
         <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-indigo-800 active:scale-95">
-          <i class="ph-duotone ph-airplane"></i>
+          <i class="ph-duotone ph-users"></i>
         </a>
       </li>
       <li>
@@ -22,12 +32,12 @@
       </li>
       <li>
         <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-indigo-800 active:scale-95">
-          <i class="ph-duotone ph-asterisk"></i>
+          <i class="ph-duotone ph-funnel"></i>
         </a>
       </li>
       <li>
-        <a href="{{ url_for('core.logout') }}" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-indigo-800 active:scale-95">
-          <i class="ph-duotone ph-arrow-circle-right"></i>
+        <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 hover:bg-indigo-800 active:scale-95">
+          <i class="ph-duotone ph-gear"></i>
         </a>
       </li>
     </ul>

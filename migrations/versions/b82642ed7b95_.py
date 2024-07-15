@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 21942c28d7cf
+Revision ID: b82642ed7b95
 Revises: 
-Create Date: 2024-07-14 12:59:08.435088
+Create Date: 2024-07-14 21:31:23.178399
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '21942c28d7cf'
+revision = 'b82642ed7b95'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,6 +31,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('sequence', sa.Integer(), nullable=True),
     sa.Column('title', sa.String(length=100), nullable=False),
+    sa.Column('isAllowedTask', sa.Boolean(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
@@ -41,6 +42,8 @@ def upgrade():
     sa.Column('sequence', sa.Integer(), nullable=True),
     sa.Column('title', sa.String(length=100), nullable=False),
     sa.Column('status', sa.String(length=100), nullable=False),
+    sa.Column('priority', sa.String(length=100), nullable=False),
+    sa.Column('owner', sa.String(length=100), nullable=False),
     sa.Column('is_completed', sa.Boolean(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),

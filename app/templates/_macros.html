@@ -1,25 +1,29 @@
 {% macro task_card(task_item) %}
 <li id="task-item-{{ task_item.id }}" class="bg-zinc-50 border-zinc-400 rounded-sm shadow-md relative draggable task-item" draggable="true">
-  <div class="bg-indigo-200 min-h-4"></div>
+  <div class="bg-indigo-200 h-5 cursor-grab"></div>
   <div class="absolute top-2 right-2">
     <img class="rounded-sm w-7 h-7" src="{{ url_for('static', filename='img/face-2.png' )}}" alt="">
   </div>
   <div class="p-2">
-    <header class="text-xs font-normal flex items-center">
+    <header class="text-sm font-normal flex items-center">
       <span>{{ task_item.title }}</span>
     </header>
-    <main class="flex items-center py-1 gap-2">
-      <a href="#" class="text-lg flex items-center"><i class="ph ph-check-square-offset"></i></a>
+    <section class="py-1 gap-2 text-xs text-zinc-500">
+      <p>Quem: {{ task_item.owner }}</p>
+      <p>Prioridade: {{ task_item.priority }}</p>
+    </section>
+    <section class="flex items-center py-1 gap-2 justify-end text-zinc-500">
+      <a href="#" class="text-lg flex items-center"><i class="ph ph-paperclip"></i></a>
       <a href="#" class="text-lg flex items-center"><i class="ph ph-chat-text"></i></a>
-    </main>
+    </section>
   </div>
 </li>
 {% endmacro %}
 
 {% macro task_section(task) %}
 <section id="task-{{ task.id }}" class="task border-x p-2 bg-white overflow-y-auto" ondrop="drop(event)" ondragover="allowDrop(event)">
-  <header class="py-4 text-sm flex items-center justify-between">
-    <h3>{{ task.title }}</h3>
+  <header class="py-4 text-md flex items-center justify-between">
+    <h3 class="">{{ task.title }}</h3>
     {% if task.isAllowedTask %}
       <a href="#" class="p-1 bg-indigo-300 hover:bg-indigo-400 active:bg-indigo-500 flex items-center justify-center text-white"><i class="ph ph-plus"></i></a>
     {% endif %}

@@ -33,7 +33,7 @@ def login():
             return redirect(url_for("task.index"))
         else:
             flash("Login ou senha incorretos.", "danger")
-    return render_template("login.html", form=form)
+    return render_template("core/login.html", form=form)
 
 
 @bp_core.route("/register", methods=["GET", "POST"])
@@ -51,7 +51,7 @@ def register():
             current_app.db.session.commit()
             flash("Usuário criado com sucesso!", "info")
             return redirect(url_for("core.login"))
-    return render_template("register.html", form=form)
+    return render_template("core/register.html", form=form)
 
 
 @bp_core.route("/logout")
