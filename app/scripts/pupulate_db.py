@@ -14,13 +14,13 @@ def populate_db():
     click.echo("Populating the database with mock data...")
 
     tasks = [
-        {"title": "Planejamento", "user_id": 1},
-        {"title": "Em Desenvolvimento", "user_id": 1},
-        {"title": "Em teste", "user_id": 1},
-        {"title": "Processo de deploy", "user_id": 1},
-        {"title": "Bugfix", "user_id": 1},
-        {"title": "Finalizados", "user_id": 1},
-        {"title": "Cancelados", "user_id": 1},
+        {"title": "Planejamento", "user_id": 1, "isAllowedTask": True},
+        {"title": "Em Desenvolvimento", "user_id": 1, "isAllowedTask": False},
+        {"title": "Em teste", "user_id": 1, "isAllowedTask": False},
+        {"title": "Processo de deploy", "user_id": 1, "isAllowedTask": False},
+        {"title": "Bugfix", "user_id": 1, "isAllowedTask": False},
+        {"title": "Finalizados", "user_id": 1, "isAllowedTask": False},
+        {"title": "Cancelados", "user_id": 1, "isAllowedTask": False},
     ]
 
     task_items = [
