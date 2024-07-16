@@ -27,7 +27,7 @@
 
 {% macro task_section(task) %}
 <section id="task-{{ task.id }}" class="task border-x p-2 bg-white overflow-y-auto shadow" ondrop="drop(event)" ondragover="allowDrop(event)">
-  <header class="p-2 text-md flex items-center justify-between bg-blue-50 mb-2 text-zinc-700">
+  <header class="p-2 text-md flex items-center justify-between bg-indigo-50 mb-2 text-zinc-700 shadow">
     <h3 class="">{{ task.title }}</h3>
     {% if task.isAllowedTask %}
       <a href="#" class="p-1 bg-indigo-400 hover:bg-indigo-300 active:bg-indigo-500 flex items-center justify-center text-white"><i class="ph ph-plus"></i></a>

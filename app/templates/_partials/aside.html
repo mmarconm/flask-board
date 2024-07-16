@@ -6,9 +6,24 @@
   <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 bg-zinc-100 hover:bg-indigo-100  active:scale-95">
     <i class="ph ph-airplay text-2xl"></i>
   </a>
-  <a href="#" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 bg-zinc-100 hover:bg-indigo-100  active:scale-95">
-    <i class="ph ph-app-window text-2xl"></i>
-  </a>
+  <div class="drawer">
+    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content">
+      <!-- Page content here -->
+      <label for="my-drawer" title="Meus projetos" class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 bg-zinc-100 hover:bg-indigo-100  active:scale-95 drawer-button"><i class="ph ph-app-window text-2xl"></i></label>
+    </div>
+    <div class="drawer-side z-50">
+      <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+
+      <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4 space-y-2">
+        <li class="py-2 text-lg text-zinc-600 font-bold text-center">Meus projetos</li>
+        <li class=""><a>Openshift /Kubernetes</a></li>
+        <li><a>Fiscal</a></li>
+        <li><a>Departamento RH</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- Configurações -->
   <a href="{{ url_for('core.logout') }}" class="flex items-center justify-center mt-auto transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 bg-zinc-100 hover:bg-indigo-100  active:scale-95">
     <i class="ph ph-arrow-circle-right text-2xl"></i>
   </a>
