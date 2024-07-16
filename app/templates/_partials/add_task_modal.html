@@ -5,11 +5,15 @@
       method="post"
       hx-post="{{ url_for('task.add_task_modal') }}"
       hx-target=".task-items"
-      hx-swap="afterbegin"
-      hx-vals='{"task_id": "{{ task_id }}"}'
+      hx-swap="beforeend"
       hx-on="htmx:afterRequest: document.getElementById('add_task_modal').close()"
     >
       {{ form.hidden_tag() }}
+      <input
+        type="hidden"
+        name="task_id"
+        value="{{ request.args.get('task_id') }}"
+      />
       <section class="space-y-2 py-1 text-xs text-zinc-500">
         <label for="title" class="flex items-center gap-1">
           <span class="basis-16">Tarefa</span>

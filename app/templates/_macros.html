@@ -7,7 +7,7 @@
     <span class="h-3 w-3 bg-red-400"></span>
   </div>
   <div class="absolute top-2 right-2">
-    <img class="rounded-sm w-8 h-8" src="{{ url_for('static', filename='img/face-1.png' )}}" alt="">
+    <img class="rounded-sm w-8 h-8 mask mask-squircle" src="{{ url_for('static', filename='img/face-1.png' )}}" alt="">
   </div>
   <div class="p-2">
     <header class="text-sm font-normal flex items-center py-2">
@@ -31,7 +31,7 @@
     <h3 class="">{{ task.title }}</h3>
     {% if task.isAllowedTask %}
       <div id="modal_content"></div>
-      <button class="p-1 bg-indigo-400 hover:bg-indigo-300 active:bg-indigo-500 flex items-center justify-center text-white" hx-get="{{ url_for('task.add_task_modal') }}" hx-target="#modal_content" hx-swap="innerHTML"  hx-vals='{"task_id": "{{ task.id }}"}'>
+      <button class="p-1 bg-indigo-400 hover:bg-indigo-300 active:bg-indigo-500 flex items-center justify-center text-white" hx-get="{{ url_for('task.add_task_modal', task_id=task.id) }}"  hx-target="#modal_content" hx-swap="innerHTML"  hx-vals='{"task_id": "{{ task.id }}"}'>
         <i class="ph ph-plus"></i>
       </button>
     {% endif %}
