@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./app/**/*.{html,js}"],
-  theme: ["bumblebee", "light"],
+  theme: ["lofi", "light"],
   plugins: [require("daisyui")],
 };

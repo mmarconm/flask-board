@@ -1,3 +1,4 @@
+from datetime import datetime
 from app.models.configure import db
 
 
@@ -37,7 +38,8 @@ class TaskItem(db.Model):
     created_at = db.Column(
         db.DateTime, nullable=False, default=db.func.current_timestamp()
     )
-    updated_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     task_id = db.Column(db.Integer, db.ForeignKey("task.id"))
 
     def __str__(self) -> str:
