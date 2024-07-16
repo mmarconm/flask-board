@@ -2,6 +2,7 @@
   <div class="modal-box">
     <h3 class="text-lg font-bold text-center">Nova Tarefa</h3>
     <form
+      class="w-full p-4"
       method="post"
       hx-post="{{ url_for('task.add_task_modal') }}"
       hx-target=".task-items"
@@ -14,39 +15,14 @@
         name="task_id"
         value="{{ request.args.get('task_id') }}"
       />
-      <section class="space-y-2 py-1 text-xs text-zinc-500">
-        <label for="title" class="flex items-center gap-1">
-          <span class="basis-16">Tarefa</span>
-          {{ form.title(class="input input-bordered w-full max-w-xs
-          focus:outline-none focus:bg-zinc-100 flex-1") }}
-        </label>
-        <label for="status" class="flex items-center gap-1">
-          <span class="basis-16">Status</span>
-          {{ form.status(class="input input-bordered w-full max-w-xs
-          focus:outline-none focus:bg-zinc-100 flex-1") }}
-        </label>
-        <label for="status" class="flex items-center gap-1">
-          <span class="basis-16">Prioridade</span>
-          {{ form.priority(class="input input-bordered w-full max-w-xs
-          focus:outline-none focus:bg-zinc-100 flex-1") }}
-        </label>
-        <label for="status" class="flex items-center gap-1">
-          <span class="basis-16">Responsável</span>
-          {{ form.owner(class="input input-bordered w-full max-w-xs
-          focus:outline-none focus:bg-zinc-100 flex-1") }}
-        </label>
-        <label for="status" class="flex items-center gap-1">
-          <span class="basis-16">Concluida?</span>
-          {{ form.is_completed(class="checkbox") }}
-        </label>
+
+      <section class="w-full space-y-2">
+        {{ form.title(class="input input-bordered input-md w-full focus:outline-none focus:bg-zinc-100", placeholder_="Nova Tarefa") }} 
+        {{ form.priority(class="input input-bordered input-md w-full focus:outline-none focus:bg-zinc-100", placeholder_="Prioridade") }} 
+        {{ form.description(class="w-full textarea textarea-bordered focus:outline-none focus:bg-zinc-100", placeholder_="Observações") }}
       </section>
-      <section class="mt-4 text-white">
-        <button
-          type="submit"
-          class="flex items-center justify-center transition-colors duration-300 ease-in-out select-none cursor-pointer p-2 bg-indigo-800 hover:bg-indigo-900 active:scale-95 text-sm gap-2"
-        >
-          Atualizar
-        </button>
+      <section class="mt-4 text-white w-full">
+        <button class="btn btn-primary btn-md w-full">Salvar</button>
       </section>
     </form>
   </div>

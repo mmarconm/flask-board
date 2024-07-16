@@ -27,16 +27,12 @@ def add_task_modal():
     form = TaskItemForm()
     if form.validate_on_submit():
         title = form.title.data
-        status = form.status.data
         priority = form.priority.data
-        owner = form.owner.data
-        is_completed = form.is_completed.data
+        description = form.description.data
         task_item = TaskItem(
             title=title, 
-            status=status, 
+            description=description,
             priority=priority, 
-            owner=owner, 
-            is_completed=is_completed, 
             task_id=task_id
         )
         current_app.db.session.add(task_item)

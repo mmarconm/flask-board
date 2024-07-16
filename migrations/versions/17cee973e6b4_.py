@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: b82642ed7b95
+Revision ID: 17cee973e6b4
 Revises: 
-Create Date: 2024-07-14 21:31:23.178399
+Create Date: 2024-07-16 00:15:18.334957
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b82642ed7b95'
+revision = '17cee973e6b4'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -41,12 +41,10 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('sequence', sa.Integer(), nullable=True),
     sa.Column('title', sa.String(length=100), nullable=False),
-    sa.Column('status', sa.String(length=100), nullable=False),
+    sa.Column('description', sa.Text(), nullable=True),
     sa.Column('priority', sa.String(length=100), nullable=False),
-    sa.Column('owner', sa.String(length=100), nullable=False),
-    sa.Column('is_completed', sa.Boolean(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
-    sa.Column('updated_at', sa.DateTime(), nullable=False),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.Column('task_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['task_id'], ['task.id'], ),
     sa.PrimaryKeyConstraint('id')

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, PasswordField, SubmitField
+from wtforms import StringField, BooleanField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import (
     DataRequired,
     Length,
@@ -16,10 +16,9 @@ class TaskForm(FlaskForm):
 
 class TaskItemForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
-    status = StringField('Status')
+    description = TextAreaField('Description')
     priority = StringField('Priority')
-    owner = StringField('Owner')
-    is_completed = BooleanField('Is Completed')
+    task_id = StringField('Task ID')
 
 class UserForm(FlaskForm):
     username = StringField(

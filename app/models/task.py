@@ -32,10 +32,8 @@ class TaskItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sequence = db.Column(db.Integer, default=0)
     title = db.Column(db.String(100), nullable=False)
-    status = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text(), nullable=True)
     priority = db.Column(db.String(100), nullable=False)
-    owner = db.Column(db.String(100), nullable=False)
-    is_completed = db.Column(db.Boolean, default=False)
     created_at = db.Column(
         db.DateTime, nullable=False, default=db.func.current_timestamp()
     )
