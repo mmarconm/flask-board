@@ -1,0 +1,36 @@
+<li
+  id="task-item-{{ task_item.id }}"
+  class="bg-zinc-50 border-zinc-400 rounded-sm shadow-md relative draggable task-item"
+  draggable="true"
+>
+  <div class="bg-slate-200 h-5 cursor-grab"></div>
+  <div class="absolute top-3 left-2 flex items-center gap-1">
+    <span class="h-3 w-3 bg-blue-400"></span>
+    <span class="h-3 w-3 bg-blue-400"></span>
+    <span class="h-3 w-3 bg-red-400"></span>
+  </div>
+  <div class="absolute top-2 right-2">
+    <img
+      class="rounded-sm w-8 h-8"
+      src="{{ url_for('static', filename='img/face-1.png' )}}"
+      alt=""
+    />
+  </div>
+  <div class="p-2">
+    <header class="text-sm font-normal flex items-center py-2">
+      <span>{{ task_item.title }}</span>
+    </header>
+    <section class="py-1 gap-2 text-xs text-zinc-500">
+      <p>Quem: {{ task_item.owner }}</p>
+      <p>Prioridade: {{ task_item.priority }}</p>
+    </section>
+    <section class="flex items-center py-1 gap-2 justify-end text-zinc-500">
+      <a href="#" class="text-lg flex items-center"
+        ><i class="ph ph-paperclip"></i
+      ></a>
+      <a href="#" class="text-lg flex items-center"
+        ><i class="ph ph-chat-text"></i
+      ></a>
+    </section>
+  </div>
+</li>

@@ -31,7 +31,7 @@
     <h3 class="">{{ task.title }}</h3>
     {% if task.isAllowedTask %}
       <div id="modal_content"></div>
-      <button class="p-1 bg-indigo-400 hover:bg-indigo-300 active:bg-indigo-500 flex items-center justify-center text-white" hx-get="{{ url_for('task.add_task_modal') }}" hx-target="#modal_content" hx-swap="innerHTML" hx-vals="{'task_id': 'Moreno' }">
+      <button class="p-1 bg-indigo-400 hover:bg-indigo-300 active:bg-indigo-500 flex items-center justify-center text-white" hx-get="{{ url_for('task.add_task_modal') }}" hx-target="#modal_content" hx-swap="innerHTML"  hx-vals='{"task_id": "{{ task.id }}"}'>
         <i class="ph ph-plus"></i>
       </button>
     {% endif %}
@@ -44,3 +44,5 @@
   </ol>
 </section>
 {% endmacro %}
+
+

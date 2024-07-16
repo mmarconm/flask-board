@@ -23,6 +23,8 @@ def index():
 
 @bp_task.route('/add_task_modal', methods=['POST', "GET"])
 def add_task_modal():
+    task_id = request.values.get('task_id')
+    print(task_id)
     form = TaskItemForm()
     if form.validate_on_submit():
         title = form.title.data
@@ -40,7 +42,7 @@ def add_task_modal():
         )
         current_app.db.session.add(task_item)
         current_app.db.session.commit()
-        return render_template('_partials/task_card.html', task_item=task_item)
+        return render_template('_partials/task_item.html', task_item=task_item)
 
     return render_template('_partials/add_task_modal.html', form=form)
 
@@ -63,7 +65,7 @@ def update_task_item():
     task_item_id = data.get("task_item_id")
     new_task_id = data.get("new_task_id")
 
-    task_item = Task.query.get(task_item_id)
+    task_item = TaskItem.query.get(task_item_id)
     if task_item:
         task_item.task_id = new_task_id
         current_app.db.session.commit()
