@@ -24,7 +24,6 @@ def index():
 @bp_task.route('/add_task_modal', methods=['POST', "GET"])
 def add_task_modal():
     task_id = request.values.get('task_id')
-    print(task_id)
     form = TaskItemForm()
     if form.validate_on_submit():
         title = form.title.data
@@ -38,7 +37,7 @@ def add_task_modal():
             priority=priority, 
             owner=owner, 
             is_completed=is_completed, 
-            task_id=1
+            task_id=task_id
         )
         current_app.db.session.add(task_item)
         current_app.db.session.commit()

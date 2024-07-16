@@ -1,106 +1,112 @@
 function allowDrop(event) {
-    event.preventDefault();
+  event.preventDefault();
 }
 
 function drag(event) {
-    event.dataTransfer.setData("text", event.target.id);
+  event.dataTransfer.setData("text", event.target.id);
 }
 
 function drop(event) {
-    event.preventDefault();
-    var data = event.dataTransfer.getData("text");
-    var taskItem = document.getElementById(data);
+  event.preventDefault();
+  var data = event.dataTransfer.getData("text");
+  var taskItem = document.getElementById(data);
 
-    if (!taskItem) {
-        console.error('Task item not found:', data);
-        return;
-    }
+  if (!taskItem) {
+      return;
+  }
 
-    var newTaskElement = event.target.closest('.task');
-    if (!newTaskElement) {
-        console.error('New task element not found');
-        return;
-    }
+  var newTaskElement = event.target.closest('.task');
+  if (!newTaskElement) {
+      return;
+  }
 
-    var newTaskId = newTaskElement.id.split('-')[1];
-    var taskItemId = taskItem.id.split('-')[2];
+  var newTaskId = newTaskElement.id.split('-')[1];
+  var taskItemId = taskItem.id.split('-')[2];
 
-    var taskItemContainer = newTaskElement.querySelector('ol.task-items');
-    if (!taskItemContainer) {
-        console.error('Task item container not found');
-        return;
-    }
+  var taskItemContainer = newTaskElement.querySelector('ol.task-items');
+  if (!taskItemContainer) {
+      return;
+  }
 
-    // Move the task item in the DOM
-    taskItemContainer.appendChild(taskItem);
+  taskItemContainer.appendChild(taskItem);
 
-    fetch('/update_task_item', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            task_item_id: taskItemId,
-            new_task_id: newTaskId
-        })
-    });
+  fetch('/update_task_item', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          task_item_id: taskItemId,
+          new_task_id: newTaskId
+      })
+  });
 }
 
 function getDragAfterElement(container, y) {
   const draggableElements = [
-    ...container.querySelectorAll("li[id*=task-item-]:not(.dragging)"),
+      ...container.querySelectorAll("li[id*=task-item-]:not(.dragging)"),
   ];
 
   return draggableElements.reduce(
-    (closest, child) => {
-      const box = child.getBoundingClientRect();
-      const offset = y - box.top - box.height / 2;
-      if (offset < 0 && offset > closest.offset) {
-        return { offset: offset, element: child };
-      } else {
-        return closest;
-      }
-    },
-    { offset: Number.NEGATIVE_INFINITY }
+      (closest, child) => {
+          const box = child.getBoundingClientRect();
+          const offset = y - box.top - box.height / 2;
+          if (offset < 0 && offset > closest.offset) {
+              return { offset: offset, element: child };
+          } else {
+              return closest;
+          }
+      },
+      { offset: Number.NEGATIVE_INFINITY }
   ).element;
 }
 
-const containers = document.querySelectorAll("section[id*=task-]");
-const draggables = document.querySelectorAll("li[id*=task-item-]");
-
-draggables.forEach((draggable) => {
+function addDragAndDropEvents(draggable) {
   draggable.addEventListener("dragstart", (event) => {
-    draggable.classList.add("dragging");
-    drag(event);
+      draggable.classList.add("dragging");
+      drag(event);
   });
 
   draggable.addEventListener("dragend", () => {
-    draggable.classList.remove("dragging");
+      draggable.classList.remove("dragging");
   });
-});
+}
 
-containers.forEach((container) => {
-  container.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    const afterElement = getDragAfterElement(container, e.clientY);
-    const draggable = document.querySelector(".dragging");
-    if (afterElement == null) {
-      container.querySelector('ol.task-items').appendChild(draggable);
-    } else {
-      container.querySelector('ol.task-items').insertBefore(draggable, afterElement);
-    }
+function initializeDragAndDrop() {
+  const containers = document.querySelectorAll("section[id*=task-]");
+  const draggables = document.querySelectorAll("li[id*=task-item-]");
+
+  draggables.forEach((draggable) => {
+      addDragAndDropEvents(draggable);
   });
 
-  container.addEventListener("drop", drop);
-});
+  containers.forEach((container) => {
+      container.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          const afterElement = getDragAfterElement(container, e.clientY);
+          const draggable = document.querySelector(".dragging");
+          if (afterElement == null) {
+              container.querySelector('ol.task-items').appendChild(draggable);
+          } else {
+              container.querySelector('ol.task-items').insertBefore(draggable, afterElement);
+          }
+      });
 
-// Modal
+      container.addEventListener("drop", drop);
+  });
+}
+
+
+initializeDragAndDrop();
+
+
 document.addEventListener('htmx:afterSwap', (event) => {
-  // Check if the target is the modal content
   if (event.detail.target.id === 'modal_content') {
-    const modal = document.getElementById('add_task_modal');
-    if (modal) {
-      modal.showModal();
-    }
+      const modal = document.getElementById('add_task_modal');
+      if (modal) {
+          modal.showModal();
+      }
   }
+
+  initializeDragAndDrop();
 });
