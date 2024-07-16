@@ -93,3 +93,14 @@ containers.forEach((container) => {
 
   container.addEventListener("drop", drop);
 });
+
+// Modal
+document.addEventListener('htmx:afterSwap', (event) => {
+  // Check if the target is the modal content
+  if (event.detail.target.id === 'modal_content') {
+    const modal = document.getElementById('add_task_modal');
+    if (modal) {
+      modal.showModal();
+    }
+  }
+});

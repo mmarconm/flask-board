@@ -10,19 +10,16 @@ from wtforms.validators import (
 from .models import User
 
 
-class Task(FlaskForm):
+class TaskForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired(), Length(min=2, max=100)])
     user_id = StringField("User ID")
 
-
-class TaskItem(FlaskForm):
-    title = StringField("Title", validators=[DataRequired(), Length(min=2, max=100)])
-    status = BooleanField("Complete")
-    is_completed = BooleanField("Is Completed")
-    created_at = StringField("Created At")
-    updated_at = StringField("Updated At")
-    task_id = StringField("Task ID")
-
+class TaskItemForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    status = StringField('Status')
+    priority = StringField('Priority')
+    owner = StringField('Owner')
+    is_completed = BooleanField('Is Completed')
 
 class UserForm(FlaskForm):
     username = StringField(

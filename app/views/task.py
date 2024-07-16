@@ -3,11 +3,14 @@ from flask import (
     current_app,
     render_template,
     request,
+    redirect,
+    url_for,
     jsonify,
 )
 from flask_login import login_required
 
 from app.models.task import Task, TaskItem
+from app.forms import TaskItemForm, TaskForm
 
 bp_task = Blueprint("task", __name__)
 
@@ -18,15 +21,28 @@ def index():
     tasks = Task.query.all()
     return render_template("task/index.html", tasks=tasks)
 
+@bp_task.route('/add_task_modal', methods=['POST', "GET"])
+def add_task_modal():
+    form = TaskItemForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        status = form.status.data
+        priority = form.priority.data
+        owner = form.owner.data
+        is_completed = form.is_completed.data
+        task_item = TaskItem(
+            title=title, 
+            status=status, 
+            priority=priority, 
+            owner=owner, 
+            is_completed=is_completed, 
+            task_id=1
+        )
+        current_app.db.session.add(task_item)
+        current_app.db.session.commit()
+        return render_template('_partials/task_card.html', task_item=task_item)
 
-@bp_task.route("/addtask", methods=["POST"])
-@login_required
-def add_task():
-    title = request.form.get("title")
-    new_task = Task(title=title)
-    current_app.db.session.add(new_task)
-    current_app.db.session.commit()
-    return jsonify({"id": new_task.id, "title": new_task.title})
+    return render_template('_partials/add_task_modal.html', form=form)
 
 
 @bp_task.route("/moveitem", methods=["POST"])
@@ -47,7 +63,7 @@ def update_task_item():
     task_item_id = data.get("task_item_id")
     new_task_id = data.get("new_task_id")
 
-    task_item = TaskItem.query.get(task_item_id)
+    task_item = Task.query.get(task_item_id)
     if task_item:
         task_item.task_id = new_task_id
         current_app.db.session.commit()
